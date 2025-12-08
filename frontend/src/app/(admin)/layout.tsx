@@ -5,52 +5,36 @@ import AppHeader from "@/layout/AppHeader";
 import AppSidebar from "@/layout/AppSidebar";
 import Backdrop from "@/layout/Backdrop";
 import React from "react";
-import { usePathname } from "next/navigation";
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
-  const pathname = usePathname();
 
-  // Route-specific styles for the main content container
-  const getRouteSpecificStyles = () => {
-    switch (pathname) {
-      case "/text-generator":
-        return "";
-      case "/code-generator":
-        return "";
-      case "/image-generator":
-        return "";
-      case "/video-generator":
-        return "";
-      default:
-        return "p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6";
-    }
-  };
+  // константы, совпадающие с Sidebar
+  const SIDEBAR_EXPANDED = 280;
+  const SIDEBAR_COLLAPSED = 90;
 
-  // Dynamic class for main content margin based on sidebar state
-  const mainContentMargin = isMobileOpen
-    ? "ml-0"
-    : isExpanded || isHovered
-    ? "xl:ml-[290px]"
-    : "xl:ml-[90px]";
+  const sidebarWidth =
+    isExpanded || isHovered || isMobileOpen
+      ? SIDEBAR_EXPANDED
+      : SIDEBAR_COLLAPSED;
 
   return (
-    <div className="min-h-screen xl:flex">
-      {/* Sidebar and Backdrop */}
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <AppSidebar />
       <Backdrop />
-      {/* Main Content Area */}
+
+      {/* MAIN CONTENT */}
       <div
-        className={`flex-1 transition-all  duration-300 ease-in-out ${mainContentMargin}`}
+        className="transition-all duration-300 ease-in-out"
+        style={{
+          marginLeft: `${sidebarWidth}px`,   // ВОТ ЭТО ГЛАВНЫЙ ФИКС
+        }}
       >
-        {/* Header */}
         <AppHeader />
-        {/* Page Content */}
-        <div className={getRouteSpecificStyles()}>{children}</div>
+
+        <main className="p-6 mx-auto max-w-[1600px]">
+          {children}
+        </main>
       </div>
     </div>
   );

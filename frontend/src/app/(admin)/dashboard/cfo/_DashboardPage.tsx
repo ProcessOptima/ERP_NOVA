@@ -10,6 +10,9 @@ import CategoryDataTable from "./components/CategoryDataTable";
 import PieChartIncome from "./components/PieChartIncome";
 import PieChartExpenses from "./components/PieChartExpenses";
 
+import {formatNumber} from "@/lib/format";
+
+
 //
 // ---------- TYPES ----------
 //
@@ -251,48 +254,38 @@ export default function DashboardPage({initialData}: DashboardPageProps) {
                     <Card>
                         <CardTitle>Доходы</CardTitle>
                         <CardDescription>
-                            <span className="text-2xl font-semibold">
-                                {data.total_revenue.toLocaleString()} ₽
-                            </span>
+        <span className="text-2xl font-semibold">
+            {formatNumber(data.total_revenue)} ₽
+        </span>
                         </CardDescription>
                     </Card>
 
                     <Card>
                         <CardTitle>Расходы</CardTitle>
                         <CardDescription>
-                            <span className="text-2xl font-semibold">
-                                {data.total_costs.toLocaleString()} ₽
-                            </span>
+        <span className="text-2xl font-semibold">
+            {formatNumber(data.total_costs)} ₽
+        </span>
                         </CardDescription>
                     </Card>
 
                     <Card>
                         <CardTitle>Прибыль</CardTitle>
                         <CardDescription>
-                            <span className="text-2xl font-semibold">
-                                {data.total_profit.toLocaleString()} ₽
-                            </span>
-                        </CardDescription>
-                    </Card>
-
-                    <Card>
-                        <CardTitle>Рентабельность, %</CardTitle>
-                        <CardDescription>
-                            <span className="text-2xl font-semibold">
-                                {data.profitability}
-                            </span>
+        <span className="text-2xl font-semibold">
+            {formatNumber(data.total_profit)} ₽
+        </span>
                         </CardDescription>
                     </Card>
 
                     <Card>
                         <CardTitle>Дивиденды</CardTitle>
                         <CardDescription>
-                            <span className="text-2xl font-semibold">
-                                {data.total_dividends.toLocaleString()} ₽
-                            </span>
+        <span className="text-2xl font-semibold">
+            {formatNumber(data.total_dividends)} ₽
+        </span>
                         </CardDescription>
                     </Card>
-
                 </div>
 
                 <div className="col-span-12 md:col-span-8 xl:col-span-9">

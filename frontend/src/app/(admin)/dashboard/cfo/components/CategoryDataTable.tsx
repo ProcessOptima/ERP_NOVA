@@ -2,6 +2,7 @@
 
 import {useState, useMemo} from "react";
 import {useRouter} from "next/navigation";
+import {formatNumber} from "@/lib/format";
 
 export interface CategoryRow {
     category: string;
@@ -73,7 +74,7 @@ export default function CategoryDataTable({rows}: Props) {
 
     return (
         <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default
-                    dark:border-strokedark dark:bg-boxdark sm:px-7.5">
+                        dark:border-strokedark dark:bg-boxdark sm:px-7.5">
             <div className="max-w-full overflow-x-auto">
                 <table className="w-full table-auto">
                     <thead>
@@ -117,8 +118,15 @@ export default function CategoryDataTable({rows}: Props) {
                                 {arrow(row.creditdebitindicator)}
                                 {row.category}
                             </td>
-                            <td className="py-4 px-4">{row.amount.toLocaleString()} ₽</td>
-                            <td className="py-4 px-4">{row.percent.toFixed(2)}%</td>
+
+                            {/* ★ FIXED: ЕДИНЫЙ ФОРМАТАТОР */}
+                            <td className="py-4 px-4">
+                                {formatNumber(row.amount)} ₽
+                            </td>
+
+                            <td className="py-4 px-4">
+                                {row.percent.toFixed(2)}%
+                            </td>
                         </tr>
                     ))}
 
@@ -141,8 +149,15 @@ export default function CategoryDataTable({rows}: Props) {
                                 {arrow(row.creditdebitindicator)}
                                 {row.category}
                             </td>
-                            <td className="py-4 px-4">{row.amount.toLocaleString()} ₽</td>
-                            <td className="py-4 px-4">{row.percent.toFixed(2)}%</td>
+
+                            {/* ★ FIXED */}
+                            <td className="py-4 px-4">
+                                {formatNumber(row.amount)} ₽
+                            </td>
+
+                            <td className="py-4 px-4">
+                                {row.percent.toFixed(2)}%
+                            </td>
                         </tr>
                     ))}
 

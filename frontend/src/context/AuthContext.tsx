@@ -78,6 +78,10 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
 
             const data = await res.json();
             setUser(data);
+
+            if (data.role) {
+                document.cookie = `role=${data.role}; path=/;`;
+            }
         } catch (err) {
             console.error("ME request failed:", err);
             clearTokens();
@@ -140,10 +144,15 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
 
             const data = await res.json();
 
-            // ставим куки
-            setCookies(data.access, data.refresh);
+            console.log("LOGIN RESPONSE:", data);
 
+            // Django returns ONLY tokens
+            document.cookie = `access=${data.access}; path=/;`;
+            document.cookie = `refresh=${data.refresh}; path=/;`;
+
+            // Load user from /auth/me/
             await loadUser();
+
             return true;
         } catch (err) {
             console.error("Login error:", err);
