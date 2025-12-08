@@ -2,7 +2,7 @@
 
 import {createContext, useContext, useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
-import {API, fetchWithAuth} from "@/app/api";
+import {API} from "@/app/api";
 
 interface User {
     id: number;
@@ -28,47 +28,102 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
     const [loading, setLoading] = useState(true);
 
     // -------------------------------------
+    // READ TOKENS FROM COOKIES
+    // -------------------------------------
+    function getAccessToken() {
+        return document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("access="))
+            ?.split("=")[1];
+    }
+
+    function getRefreshToken() {
+        return document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("refresh="))
+            ?.split("=")[1];
+    }
+
+    // -------------------------------------
     // LOAD CURRENT USER
     // -------------------------------------
     async function loadUser() {
-        const access = localStorage.getItem("access");
+        const token = getAccessToken();
 
-        // если токена нет — вообще ничего не делаем
-        if (!access || access === "null" || access === "undefined") {
+        if (!token) {
             setUser(null);
             setLoading(false);
             return;
         }
 
         try {
-            const res = await fetchWithAuth("/auth/me/");
+            const res = await fetch(`${API}/auth/me/`, {
+                headers: {Authorization: `Bearer ${token}`},
+                cache: "no-store",
+            });
 
             if (!res.ok) {
-                // здесь как раз твой случай: токен просрочен / неверный
-                console.warn("Token invalid or expired. Clearing storage.");
-                localStorage.removeItem("access");
-                localStorage.removeItem("refresh");
-                setUser(null);
-                setLoading(false);
-                return;
+                console.warn("Access token invalid, trying refresh...");
+                const okRefresh = await refreshAccessToken();
+
+                if (!okRefresh) {
+                    clearTokens();
+                    setUser(null);
+                    setLoading(false);
+                    return;
+                }
+
+                return loadUser();
             }
 
             const data = await res.json();
             setUser(data);
         } catch (err) {
             console.error("ME request failed:", err);
-            // на всякий случай тоже чистим
-            localStorage.removeItem("access");
-            localStorage.removeItem("refresh");
+            clearTokens();
             setUser(null);
         }
 
         setLoading(false);
     }
 
-    useEffect(() => {
-        loadUser();
-    }, []);
+    // -------------------------------------
+    // REFRESH ACCESS TOKEN
+    // -------------------------------------
+    async function refreshAccessToken(): Promise<boolean> {
+        const refresh = getRefreshToken();
+        if (!refresh) return false;
+
+        try {
+            const res = await fetch(`${API}/auth/refresh/`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({refresh}),
+            });
+
+            if (!res.ok) return false;
+
+            const data = await res.json();
+            setCookies(data.access, data.refresh);
+
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    // -------------------------------------
+    // SET COOKIES
+    // -------------------------------------
+    function setCookies(access: string, refresh: string) {
+        document.cookie = `access=${access}; path=/;`;
+        document.cookie = `refresh=${refresh}; path=/;`;
+    }
+
+    function clearTokens() {
+        document.cookie = `access=; Max-Age=0; path=/;`;
+        document.cookie = `refresh=; Max-Age=0; path=/;`;
+    }
 
     // -------------------------------------
     // LOGIN
@@ -85,8 +140,8 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
 
             const data = await res.json();
 
-            localStorage.setItem("access", data.access);
-            localStorage.setItem("refresh", data.refresh);
+            // ставим куки
+            setCookies(data.access, data.refresh);
 
             await loadUser();
             return true;
@@ -100,14 +155,19 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
     // LOGOUT
     // -------------------------------------
     function logout() {
-        localStorage.removeItem("access");
-        localStorage.removeItem("refresh");
+        clearTokens();
         setUser(null);
         router.push("/signin");
     }
 
+    useEffect(() => {
+        loadUser();
+    }, []);
+
     return (
-        <AuthContext.Provider value={{user, loading, login, logout}}>
+        <AuthContext.Provider
+            value={{user, loading, login, logout}}
+        >
             {children}
         </AuthContext.Provider>
     );

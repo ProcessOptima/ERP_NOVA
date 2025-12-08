@@ -1,0 +1,1229 @@
+{
+  "filter_date": [
+    {
+      "year": 2025,
+      "month": 11
+    },
+    {
+      "year": 2025,
+      "month": 1
+    },
+    {
+      "year": 2025,
+      "month": 2
+    },
+    {
+      "year": 2025,
+      "month": 3
+    },
+    {
+      "year": 2025,
+      "month": 4
+    },
+    {
+      "year": 2025,
+      "month": 5
+    },
+    {
+      "year": 2025,
+      "month": 6
+    },
+    {
+      "year": 2025,
+      "month": 7
+    },
+    {
+      "year": 2025,
+      "month": 8
+    },
+    {
+      "year": 2025,
+      "month": 9
+    },
+    {
+      "year": 2025,
+      "month": 10
+    }
+  ],
+  "total_revenue": 129083034.0,
+  "total_costs": 94895395.0,
+  "total_profit": 34187639.0,
+  "total_dividends": 28287664.0,
+  "profitability": 26.0,
+  "revenue_by_month": [
+    {
+      "year": 2025,
+      "month": 1,
+      "revenue": 246326.1
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "revenue": 3764209.19
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "revenue": 7394949.06
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "revenue": 28650280.18
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "revenue": 14601282.84
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "revenue": 11740023.94
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "revenue": 16501461.36
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "revenue": 16228702.18
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "revenue": 7613213.04
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "revenue": 16872490.27
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "revenue": 5470096.28
+    }
+  ],
+  "costs_by_month": [
+    {
+      "year": 2025,
+      "month": 1,
+      "costs": 2013190.09
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "costs": 7718149.31
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "costs": 9698997.92
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "costs": 14736574.62
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "costs": 8607162.0
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "costs": 8269313.68
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "costs": 8637404.12
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "costs": 8837505.64
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "costs": 8740593.57
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "costs": 9024491.75
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "costs": 8612011.84
+    }
+  ],
+  "profit_by_month": [
+    {
+      "year": 2025,
+      "month": 1,
+      "revenue": 246326.1,
+      "costs": 2013190.09,
+      "dividends": 37671.0,
+      "profit": -1766863.99,
+      "free_cash_flow": -1804534.99
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "revenue": 3764209.19,
+      "costs": 7718149.31,
+      "dividends": 0.0,
+      "profit": -3953940.12,
+      "free_cash_flow": -3953940.12
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "revenue": 7394949.06,
+      "costs": 9698997.92,
+      "dividends": 0.0,
+      "profit": -2304048.86,
+      "free_cash_flow": -2304048.86
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "revenue": 28650280.18,
+      "costs": 14736574.62,
+      "dividends": 3619024.0,
+      "profit": 13913705.56,
+      "free_cash_flow": 10294681.56
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "revenue": 14601282.84,
+      "costs": 8607162.0,
+      "dividends": 0.0,
+      "profit": 5994120.84,
+      "free_cash_flow": 5994120.84
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "revenue": 11740023.94,
+      "costs": 8269313.68,
+      "dividends": 4339720.0,
+      "profit": 3470710.26,
+      "free_cash_flow": -869009.74
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "revenue": 16501461.36,
+      "costs": 8637404.12,
+      "dividends": 1585366.0,
+      "profit": 7864057.24,
+      "free_cash_flow": 6278691.24
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "revenue": 16228702.18,
+      "costs": 8837505.64,
+      "dividends": 0.0,
+      "profit": 7391196.54,
+      "free_cash_flow": 7391196.54
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "revenue": 7613213.04,
+      "costs": 8740593.57,
+      "dividends": 7411765.0,
+      "profit": -1127380.53,
+      "free_cash_flow": -8539145.53
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "revenue": 16872490.27,
+      "costs": 9024491.75,
+      "dividends": 11294118.0,
+      "profit": 7847998.52,
+      "free_cash_flow": -3446119.48
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "revenue": 5470096.28,
+      "costs": 8612011.84,
+      "dividends": 0.0,
+      "profit": -3141915.56,
+      "free_cash_flow": -3141915.56
+    }
+  ],
+  "dividends_by_month": [
+    {
+      "year": 2025,
+      "month": 1,
+      "dividends": 37671.0
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "dividends": 3619024.0
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "dividends": 4339720.0
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "dividends": 1585366.0
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "dividends": 7411765.0
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "dividends": 11294118.0
+    }
+  ],
+  "category_by_month": [
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 1,
+      "corrected_amount": 21000.0,
+      "revenue_total": 246326.1,
+      "percent": 8.53
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 29067.0,
+      "revenue_total": 3764209.19,
+      "percent": 0.77
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 39540.0,
+      "revenue_total": 7394949.06,
+      "percent": 0.53
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 100702.0,
+      "revenue_total": 28650280.18,
+      "percent": 0.35
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 21990.0,
+      "revenue_total": 14601282.84,
+      "percent": 0.15
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 21990.0,
+      "revenue_total": 11740023.94,
+      "percent": 0.19
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 62706.0,
+      "revenue_total": 16501461.36,
+      "percent": 0.38
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 23496.0,
+      "revenue_total": 16228702.18,
+      "percent": 0.14
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 28918.55,
+      "revenue_total": 7613213.04,
+      "percent": 0.38
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 29080.23,
+      "revenue_total": 16872490.27,
+      "percent": 0.17
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 52338.45,
+      "revenue_total": 5470096.28,
+      "percent": 0.96
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 2910529.15,
+      "revenue_total": 3764209.19,
+      "percent": 77.32
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 6919266.44,
+      "revenue_total": 7394949.06,
+      "percent": 93.57
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 9754382.47,
+      "revenue_total": 28650280.18,
+      "percent": 34.05
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 3991080.29,
+      "revenue_total": 14601282.84,
+      "percent": 27.33
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 256015.36,
+      "revenue_total": 11740023.94,
+      "percent": 2.18
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 7587650.05,
+      "revenue_total": 16501461.36,
+      "percent": 45.98
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 3910293.86,
+      "revenue_total": 16228702.18,
+      "percent": 24.09
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 689360.77,
+      "revenue_total": 7613213.04,
+      "percent": 9.05
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 4559568.55,
+      "revenue_total": 16872490.27,
+      "percent": 27.02
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 4667778.77,
+      "revenue_total": 5470096.28,
+      "percent": 85.33
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 1,
+      "corrected_amount": 246326.1,
+      "revenue_total": 246326.1,
+      "percent": 100.0
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 372374.72,
+      "revenue_total": 3764209.19,
+      "percent": 9.89
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 413786.78,
+      "revenue_total": 7394949.06,
+      "percent": 5.6
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 403792.83,
+      "revenue_total": 28650280.18,
+      "percent": 1.41
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 374032.43,
+      "revenue_total": 14601282.84,
+      "percent": 2.56
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 398953.55,
+      "revenue_total": 11740023.94,
+      "percent": 3.4
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 403232.11,
+      "revenue_total": 16501461.36,
+      "percent": 2.44
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 387778.0,
+      "revenue_total": 16228702.18,
+      "percent": 2.39
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 455559.5,
+      "revenue_total": 7613213.04,
+      "percent": 5.98
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 545177.24,
+      "revenue_total": 16872490.27,
+      "percent": 3.23
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 479148.36,
+      "revenue_total": 5470096.28,
+      "percent": 8.76
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 18492104.88,
+      "revenue_total": 28650280.18,
+      "percent": 64.54
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 10236170.12,
+      "revenue_total": 14601282.84,
+      "percent": 70.1
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 11000810.51,
+      "revenue_total": 11740023.94,
+      "percent": 93.7
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 8172398.65,
+      "revenue_total": 16501461.36,
+      "percent": 49.53
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 11756015.38,
+      "revenue_total": 16228702.18,
+      "percent": 72.44
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 6113924.55,
+      "revenue_total": 7613213.04,
+      "percent": 80.31
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 11767744.48,
+      "revenue_total": 16872490.27,
+      "percent": 69.75
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 481305.32,
+      "revenue_total": 3764209.19,
+      "percent": 12.79
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 61895.84,
+      "revenue_total": 7394949.06,
+      "percent": 0.84
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 84244.52,
+      "revenue_total": 11740023.94,
+      "percent": 0.72
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 338180.55,
+      "revenue_total": 16501461.36,
+      "percent": 2.05
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 174614.94,
+      "revenue_total": 16228702.18,
+      "percent": 1.08
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 354368.22,
+      "revenue_total": 7613213.04,
+      "percent": 4.65
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 323169.15,
+      "revenue_total": 5470096.28,
+      "percent": 5.91
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 1,
+      "corrected_amount": 273180.52,
+      "revenue_total": 246326.1,
+      "percent": 110.9
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 445768.23,
+      "revenue_total": 3764209.19,
+      "percent": 11.84
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 2186206.51,
+      "revenue_total": 7394949.06,
+      "percent": 29.56
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 419044.47,
+      "revenue_total": 28650280.18,
+      "percent": 1.46
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 500952.37,
+      "revenue_total": 14601282.84,
+      "percent": 3.43
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 544882.7,
+      "revenue_total": 11740023.94,
+      "percent": 4.64
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 453537.09,
+      "revenue_total": 16501461.36,
+      "percent": 2.75
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 506705.2,
+      "revenue_total": 16228702.18,
+      "percent": 3.12
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 508470.27,
+      "revenue_total": 7613213.04,
+      "percent": 6.68
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 504078.93,
+      "revenue_total": 16872490.27,
+      "percent": 2.99
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 150487.94,
+      "revenue_total": 5470096.28,
+      "percent": 2.75
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 1,
+      "corrected_amount": 41120.86,
+      "revenue_total": 246326.1,
+      "percent": 16.69
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 207206.95,
+      "revenue_total": 3764209.19,
+      "percent": 5.5
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 383076.39,
+      "revenue_total": 7394949.06,
+      "percent": 5.18
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 272064.71,
+      "revenue_total": 28650280.18,
+      "percent": 0.95
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 176900.65,
+      "revenue_total": 14601282.84,
+      "percent": 1.21
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 150811.57,
+      "revenue_total": 11740023.94,
+      "percent": 1.28
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 460778.35,
+      "revenue_total": 16501461.36,
+      "percent": 2.79
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 261857.3,
+      "revenue_total": 16228702.18,
+      "percent": 1.61
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 350993.78,
+      "revenue_total": 7613213.04,
+      "percent": 4.61
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 430291.78,
+      "revenue_total": 16872490.27,
+      "percent": 2.55
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 189346.67,
+      "revenue_total": 5470096.28,
+      "percent": 3.46
+    },
+    {
+      "category": "Расход ТУ",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 6232077.83,
+      "revenue_total": 28650280.18,
+      "percent": 21.75
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 1,
+      "corrected_amount": 64569.82,
+      "revenue_total": 246326.1,
+      "percent": 26.21
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 90286.62,
+      "revenue_total": 3764209.19,
+      "percent": 2.4
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 170965.0,
+      "revenue_total": 7394949.06,
+      "percent": 2.31
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 262462.5,
+      "revenue_total": 28650280.18,
+      "percent": 0.92
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 186844.5,
+      "revenue_total": 14601282.84,
+      "percent": 1.28
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 238435.5,
+      "revenue_total": 11740023.94,
+      "percent": 2.03
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 275482.5,
+      "revenue_total": 16501461.36,
+      "percent": 1.67
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 228164.5,
+      "revenue_total": 16228702.18,
+      "percent": 1.41
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 235748.5,
+      "revenue_total": 7613213.04,
+      "percent": 3.1
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 247851.5,
+      "revenue_total": 16872490.27,
+      "percent": 1.47
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 150805.5,
+      "revenue_total": 5470096.28,
+      "percent": 2.76
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 1,
+      "corrected_amount": 1613318.89,
+      "revenue_total": 246326.1,
+      "percent": 654.95
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 2,
+      "corrected_amount": 6945820.51,
+      "revenue_total": 3764209.19,
+      "percent": 184.52
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 3,
+      "corrected_amount": 6919210.02,
+      "revenue_total": 7394949.06,
+      "percent": 93.57
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 4,
+      "corrected_amount": 7450223.11,
+      "revenue_total": 28650280.18,
+      "percent": 26.0
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 5,
+      "corrected_amount": 7720474.48,
+      "revenue_total": 14601282.84,
+      "percent": 52.88
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 6,
+      "corrected_amount": 7313193.91,
+      "revenue_total": 11740023.94,
+      "percent": 62.29
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 7,
+      "corrected_amount": 7384900.18,
+      "revenue_total": 16501461.36,
+      "percent": 44.75
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 8,
+      "corrected_amount": 7817282.64,
+      "revenue_total": 16228702.18,
+      "percent": 48.17
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 9,
+      "corrected_amount": 7616462.47,
+      "revenue_total": 7613213.04,
+      "percent": 100.04
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 7793189.31,
+      "revenue_total": 16872490.27,
+      "percent": 46.19
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 11,
+      "corrected_amount": 8069033.28,
+      "revenue_total": 5470096.28,
+      "percent": 147.51
+    },
+    {
+      "category": "Штраф",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 10,
+      "corrected_amount": 20000.0,
+      "revenue_total": 16872490.27,
+      "percent": 0.12
+    },
+    {
+      "category": "Банк",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 430828.23,
+      "revenue_total": 129083034.44,
+      "percent": 0.33
+    },
+    {
+      "category": "Доход НО",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 45245925.71,
+      "revenue_total": 129083034.44,
+      "percent": 35.05
+    },
+    {
+      "category": "Доход ПСУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 4480161.62,
+      "revenue_total": 129083034.44,
+      "percent": 3.47
+    },
+    {
+      "category": "Доход СДУ",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 77539168.57,
+      "revenue_total": 129083034.44,
+      "percent": 60.07
+    },
+    {
+      "category": "Доход депозит",
+      "creditdebitindicator": "CREDIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 1817778.54,
+      "revenue_total": 129083034.44,
+      "percent": 1.41
+    },
+    {
+      "category": "Налог",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 6493314.23,
+      "revenue_total": 129083034.44,
+      "percent": 5.03
+    },
+    {
+      "category": "Офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 2924449.01,
+      "revenue_total": 129083034.44,
+      "percent": 2.27
+    },
+    {
+      "category": "Расход ТУ",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 6232077.83,
+      "revenue_total": 129083034.44,
+      "percent": 4.83
+    },
+    {
+      "category": "ФОТ офис",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 2151616.44,
+      "revenue_total": 129083034.44,
+      "percent": 1.67
+    },
+    {
+      "category": "ФОТ соц",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 76643108.8,
+      "revenue_total": 129083034.44,
+      "percent": 59.38
+    },
+    {
+      "category": "Штраф",
+      "creditdebitindicator": "DEBIT",
+      "year": 2025,
+      "month": 0,
+      "corrected_amount": 20000.0,
+      "revenue_total": 129083034.44,
+      "percent": 0.02
+    }
+  ]
+}
