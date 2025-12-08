@@ -2,6 +2,7 @@
 
 import {createContext, useContext, useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
+import {API, fetchWithAuth} from "@/app/api";
 
 interface User {
     id: number;
@@ -26,25 +27,27 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
-    // -----------------------------
-    //  LOAD USER ON FIRST LOAD
-    // -----------------------------
+    // -------------------------------------
+    // LOAD CURRENT USER
+    // -------------------------------------
     async function loadUser() {
         const access = localStorage.getItem("access");
-        if (!access) {
+
+        // если токена нет — вообще ничего не делаем
+        if (!access || access === "null" || access === "undefined") {
+            setUser(null);
             setLoading(false);
             return;
         }
 
         try {
-            const res = await fetch("http://localhost:8000/api/auth/me/", {
-                headers: {
-                    Authorization: `Bearer ${access}`,
-                },
-            });
+            const res = await fetchWithAuth("/auth/me/");
 
             if (!res.ok) {
-                console.warn("Access token invalid or expired");
+                // здесь как раз твой случай: токен просрочен / неверный
+                console.warn("Token invalid or expired. Clearing storage.");
+                localStorage.removeItem("access");
+                localStorage.removeItem("refresh");
                 setUser(null);
                 setLoading(false);
                 return;
@@ -52,8 +55,12 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
 
             const data = await res.json();
             setUser(data);
-        } catch (e) {
-            console.error("ME request failed:", e);
+        } catch (err) {
+            console.error("ME request failed:", err);
+            // на всякий случай тоже чистим
+            localStorage.removeItem("access");
+            localStorage.removeItem("refresh");
+            setUser(null);
         }
 
         setLoading(false);
@@ -63,12 +70,12 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
         loadUser();
     }, []);
 
-    // -----------------------------
+    // -------------------------------------
     // LOGIN
-    // -----------------------------
+    // -------------------------------------
     async function login(email: string, password: string): Promise<boolean> {
         try {
-            const res = await fetch("http://localhost:8000/api/auth/login/", {
+            const res = await fetch(`${API}/auth/login/`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({email, password}),
@@ -77,21 +84,21 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
             if (!res.ok) return false;
 
             const data = await res.json();
+
             localStorage.setItem("access", data.access);
             localStorage.setItem("refresh", data.refresh);
 
             await loadUser();
-
             return true;
-        } catch (e) {
-            console.error("Login error:", e);
+        } catch (err) {
+            console.error("Login error:", err);
             return false;
         }
     }
 
-    // -----------------------------
+    // -------------------------------------
     // LOGOUT
-    // -----------------------------
+    // -------------------------------------
     function logout() {
         localStorage.removeItem("access");
         localStorage.removeItem("refresh");
@@ -100,14 +107,7 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
     }
 
     return (
-        <AuthContext.Provider
-            value={{
-                user,
-                loading,
-                login,
-                logout,
-            }}
-        >
+        <AuthContext.Provider value={{user, loading, login, logout}}>
             {children}
         </AuthContext.Provider>
     );

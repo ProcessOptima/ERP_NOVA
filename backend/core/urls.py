@@ -1,9 +1,8 @@
+# core/urls.py
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-
-    # Подключаем маршруты приложения users
-    path("api/auth/", include("users.urls")),
+    path("api/", include("users.urls")),  # ВСЁ API
 ]
