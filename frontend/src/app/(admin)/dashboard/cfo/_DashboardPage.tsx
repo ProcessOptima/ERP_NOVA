@@ -279,6 +279,15 @@ export default function DashboardPage({initialData}: DashboardPageProps) {
                     </Card>
 
                     <Card>
+                        <CardTitle>Рентабельность, %</CardTitle>
+                        <CardDescription>
+              <span className="text-2xl font-semibold">
+                {data.profitability}
+              </span>
+                        </CardDescription>
+                    </Card>
+
+                    <Card>
                         <CardTitle>Дивиденды</CardTitle>
                         <CardDescription>
         <span className="text-2xl font-semibold">

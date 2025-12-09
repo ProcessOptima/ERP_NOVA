@@ -1,38 +1,18 @@
-export const API = "http://127.0.0.1:8000/api";
+export const API = "http://localhost:8000/api";
 
 /**
- * Универсальный fetch с автоматическим Bearer токеном.
+ * fetch, который всегда отправляет cookies HttpOnly
  */
-export async function fetchWithAuth(
-    endpoint: string,
-    options: RequestInit = {}
-) {
-    const token =
-        typeof window !== "undefined" ? localStorage.getItem("access") : null;
-
-    // Важно: вместо HeadersInit используем обычный объект
-    const headers: Record<string, string> = {
-        "Content-Type": "application/json",
-        ...(options.headers as Record<string, string> || {}),
-    };
-
-    if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
-    }
-
-    // Корректная сборка URL
-    let url: string;
-
-    if (/^https?:\/\//i.test(endpoint)) {
-        url = endpoint;
-    } else {
-        const cleanApi = API.replace(/\/+$/, ""); // без слэшей в конце
-        const cleanEndpoint = endpoint.replace(/^\/+/, ""); // без слэшей в начале
-        url = `${cleanApi}/${cleanEndpoint}`;
-    }
+export async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
+    const cleanEndpoint = endpoint.replace(/^\/+/, "");
+    const url = `${API}/${cleanEndpoint}`;
 
     return fetch(url, {
+        credentials: "include",  // <---- ВАЖНО
         ...options,
-        headers,
+        headers: {
+            "Content-Type": "application/json",
+            ...(options.headers || {}),
+        },
     });
 }

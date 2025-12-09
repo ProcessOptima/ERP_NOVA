@@ -76,7 +76,7 @@ export default function AppSidebar() {
             <GridIcon className="w-6 h-6" />
 
             {/* Текст DASHBOARD если expanded */}
-            {!collapsed && <span className="font-medium">Dashboard</span>}
+            {!collapsed && <span className="menu-item-text">Dashboard</span>}
 
             {/* Стрелка */}
             {!collapsed && (

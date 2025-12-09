@@ -1,9 +1,8 @@
-// src/app/(admin)/settings/users/[id]/page.tsx
 "use client";
 
 import {useEffect, useState} from "react";
 import {useRouter, useParams} from "next/navigation";
-import {fetchWithAuth} from "@/app/api";
+import {API} from "@/app/api";
 
 interface User {
     id: number;
@@ -22,79 +21,114 @@ export default function EditUserPage() {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
 
+    // ===============================
+    // LOAD USER FROM BACKEND
+    // ===============================
     async function loadUser() {
         try {
-            const res = await fetchWithAuth(`/users/${userId}/`);
+            const res = await fetch(`${API}/users/${userId}/`, {
+                method: "GET",
+                credentials: "include", // отправляет cookies
+            });
+
+            if (res.status === 401) {
+                console.warn("Unauthorized → redirect to login");
+                router.push("/signin");
+                return;
+            }
+
             if (!res.ok) {
                 console.error("Failed to load user:", res.status);
-                setUser(null);
-            } else {
-                const data = await res.json();
-                setUser(data);
+                return;
             }
-        } catch (e) {
-            console.error("Ошибка загрузки пользователя:", e);
+
+            const data = await res.json();
+            setUser(data);
+
+        } catch (err) {
+            console.error("Load user error:", err);
         }
+
         setLoading(false);
     }
 
+    // ===============================
+    // SAVE USER CHANGES
+    // ===============================
     async function saveUser() {
         if (!user) return;
+
         setSaving(true);
+
         try {
-            const res = await fetchWithAuth(`/users/${userId}/`, {
+            const res = await fetch(`${API}/users/${userId}/`, {
                 method: "PUT",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: JSON.stringify(user),
             });
-            if (res.ok) {
-                router.push("/settings/users");
-            } else {
-                console.error("Ошибка сохранения:", res.status);
+
+            if (res.status === 401) {
+                console.warn("Unauthorized → redirect to login");
+                router.push("/signin");
+                return;
             }
-        } catch (e) {
-            console.error("Ошибка сохранения:", e);
+
+            if (!res.ok) {
+                console.error("Ошибка сохранения:", res.status);
+            } else {
+                router.push("/settings/users");
+            }
+
+        } catch (err) {
+            console.error("Ошибка сохранения:", err);
         }
+
         setSaving(false);
     }
 
+    // ===============================
+    // LOAD ON MOUNT
+    // ===============================
     useEffect(() => {
         loadUser();
     }, []);
 
     if (loading || !user) return <p>Loading...</p>;
 
+    // ===============================
+    // UI
+    // ===============================
     return (
         <div className="max-w-xl space-y-4">
             <h1 className="text-2xl font-semibold">Edit user</h1>
 
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium">Email</label>
             <input
-                className="w-full border px-4 py-2 rounded-lg"
+                className="w-full border px-3 py-2 rounded"
                 value={user.email}
                 onChange={(e) => setUser({...user, email: e.target.value})}
             />
 
-            <label className="block text-sm font-medium text-gray-700">
-                First name
-            </label>
+            <label className="block text-sm font-medium">First name</label>
             <input
-                className="w-full border px-4 py-2 rounded-lg"
+                className="w-full border px-3 py-2 rounded"
                 value={user.first_name}
                 onChange={(e) => setUser({...user, first_name: e.target.value})}
             />
 
-            <label className="block text-sm font-medium text-gray-700">
-                Last name
-            </label>
+            <label className="block text-sm font-medium">Last name</label>
             <input
-                className="w-full border px-4 py-2 rounded-lg"
+                className="w-full border px-3 py-2 rounded"
                 value={user.last_name}
                 onChange={(e) => setUser({...user, last_name: e.target.value})}
             />
 
-            <label className="block text-sm font-medium text-gray-700">Role</label>
+            <label className="block text-sm font-medium">Role</label>
             <select
-                className="w-full border px-4 py-2 rounded-lg"
+                className="w-full border px-3 py-2 rounded"
                 value={user.role}
                 onChange={(e) => setUser({...user, role: e.target.value})}
             >
@@ -105,7 +139,7 @@ export default function EditUserPage() {
             <button
                 onClick={saveUser}
                 disabled={saving}
-                className="px-4 py-2 rounded-lg bg-blue-600 text-white disabled:bg-gray-400"
+                className="px-4 py-2 rounded bg-blue-600 text-white disabled:bg-gray-400"
             >
                 {saving ? "Saving..." : "Save"}
             </button>
