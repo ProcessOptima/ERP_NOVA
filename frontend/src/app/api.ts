@@ -1,4 +1,4 @@
-export const API = "http://localhost:8000/api";
+export const API = "http://158.160.90.163:8000/api";
 
 /**
  * fetch, который всегда отправляет cookies HttpOnly

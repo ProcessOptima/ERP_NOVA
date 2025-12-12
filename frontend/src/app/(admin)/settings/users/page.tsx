@@ -1,9 +1,13 @@
-// src/app/(admin)/settings/users/page.tsx
 "use client";
 
 import {useEffect, useState} from "react";
 import Link from "next/link";
+
 import {fetchWithAuth} from "@/app/api";
+import ComponentCard from "@/components/common/ComponentCard";
+import BaseDataTable from "@/components/tables/base/BaseDataTable";
+import Button from "@/components/ui/button/Button";
+import {PencilIcon, TrashBinIcon} from "@/icons";
 
 interface User {
     id: number;
@@ -13,85 +17,119 @@ interface User {
     role: string;
 }
 
+type UserRow = {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
+};
+
 export default function UsersPage() {
-    const [users, setUsers] = useState<User[]>([]);
+    const [rows, setRows] = useState<UserRow[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    // ===============================
+    // LOAD USERS
+    // ===============================
     async function loadUsers() {
         try {
             const res = await fetchWithAuth("/users/");
-            if (!res.ok) {
-                setError(`API error: ${res.status}`);
-                setUsers([]);
-            } else {
-                const data = await res.json();
-                setUsers(Array.isArray(data) ? data : []);
-            }
+            if (!res.ok) throw new Error(`API error: ${res.status}`);
+
+            const data: User[] = await res.json();
+            setRows(
+                data.map((u) => ({
+                    id: u.id,
+                    name: `${u.first_name} ${u.last_name}`,
+                    email: u.email,
+                    role: u.role,
+                }))
+            );
         } catch (e) {
-            console.error("Ошибка загрузки пользователей:", e);
-            setError("Network error");
+            console.error(e);
+            setError("Не удалось загрузить пользователей");
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
+    }
+
+    // ===============================
+    // DELETE USER
+    // ===============================
+    async function handleDelete(userId: number) {
+        const ok = window.confirm("Удалить пользователя?");
+        if (!ok) return;
+
+        try {
+            const res = await fetchWithAuth(`/users/${userId}/`, {
+                method: "DELETE",
+            });
+
+            if (!res.ok) {
+                alert("Ошибка удаления пользователя");
+                return;
+            }
+
+            setRows((prev) => prev.filter((u) => u.id !== userId));
+        } catch (e) {
+            console.error(e);
+            alert("Network error");
+        }
     }
 
     useEffect(() => {
         loadUsers();
     }, []);
 
-    if (loading) return <p>Loading...</p>;
-
+    if (loading) return <p className="text-gray-500">Loading...</p>;
     if (error)
         return (
-            <div className="p-4 rounded bg-red-100 text-red-800">API error: {error}</div>
+            <div className="rounded bg-red-100 px-4 py-3 text-red-800">
+                {error}
+            </div>
         );
 
     return (
-        <div>
-            <div className="flex justify-between items-center mb-6">
+        <div className="space-y-6">
+            {/* PAGE HEADER */}
+            <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-semibold">Users</h1>
 
-                <Link
-                    href="/settings/users/new"
-                    className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-                >
-                    + New user
+                <Link href="/settings/users/new">
+                    <Button>+ New user</Button>
                 </Link>
             </div>
 
-            <div className="overflow-x-auto bg-white dark:bg-gray-800 border rounded-xl">
-                <table className="w-full">
-                    <thead className="bg-gray-50 dark:bg-gray-900 text-left text-sm">
-                    <tr>
-                        <th className="px-4 py-3">ID</th>
-                        <th className="px-4 py-3">Имя</th>
-                        <th className="px-4 py-3">Email</th>
-                        <th className="px-4 py-3">Роль</th>
-                        <th/>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {users.map((u) => (
-                        <tr key={u.id} className="border-t dark:border-gray-700">
-                            <td className="px-4 py-3">{u.id}</td>
-                            <td className="px-4 py-3">
-                                {u.first_name} {u.last_name}
-                            </td>
-                            <td className="px-4 py-3">{u.email}</td>
-                            <td className="px-4 py-3">{u.role}</td>
-                            <td className="px-4 py-3 text-right">
-                                <Link
-                                    href={`/settings/users/${u.id}`}
-                                    className="text-blue-600 hover:underline"
-                                >
-                                    Edit →
-                                </Link>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </div>
+            {/* ✅ CARD — 1:1 как TailAdmin */}
+            <ComponentCard title="Users">
+                <BaseDataTable<UserRow>
+                    columns={[
+                        {key: "id", label: "ID", width: "w-[80px]", searchable: false},
+                        {key: "name", label: "Имя"},
+                        {key: "email", label: "Email"},
+                        {key: "role", label: "Роль", width: "w-[140px]"},
+                    ]}
+                    data={rows}
+                    actionRenderer={(row) => (
+                        <div className="flex items-center justify-center gap-2">
+                            <Link
+                                href={`/settings/users/${row.id}`}
+                                className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white"
+                            >
+                                <PencilIcon/>
+                            </Link>
+
+                            <button
+                                onClick={() => handleDelete(row.id)}
+                                className="text-gray-500 hover:text-error-500 dark:text-gray-400 dark:hover:text-error-500"
+                            >
+                                <TrashBinIcon/>
+                            </button>
+                        </div>
+                    )}
+                />
+            </ComponentCard>
         </div>
     );
 }

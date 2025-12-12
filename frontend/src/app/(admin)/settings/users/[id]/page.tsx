@@ -22,17 +22,16 @@ export default function EditUserPage() {
     const [saving, setSaving] = useState(false);
 
     // ===============================
-    // LOAD USER FROM BACKEND
+    // LOAD USER
     // ===============================
     async function loadUser() {
         try {
             const res = await fetch(`${API}/users/${userId}/`, {
                 method: "GET",
-                credentials: "include", // отправляет cookies
+                credentials: "include",
             });
 
             if (res.status === 401) {
-                console.warn("Unauthorized → redirect to login");
                 router.push("/signin");
                 return;
             }
@@ -44,7 +43,6 @@ export default function EditUserPage() {
 
             const data = await res.json();
             setUser(data);
-
         } catch (err) {
             console.error("Load user error:", err);
         }
@@ -53,7 +51,7 @@ export default function EditUserPage() {
     }
 
     // ===============================
-    // SAVE USER CHANGES
+    // SAVE USER
     // ===============================
     async function saveUser() {
         if (!user) return;
@@ -71,7 +69,6 @@ export default function EditUserPage() {
             });
 
             if (res.status === 401) {
-                console.warn("Unauthorized → redirect to login");
                 router.push("/signin");
                 return;
             }
@@ -81,7 +78,6 @@ export default function EditUserPage() {
             } else {
                 router.push("/settings/users");
             }
-
         } catch (err) {
             console.error("Ошибка сохранения:", err);
         }
@@ -89,57 +85,63 @@ export default function EditUserPage() {
         setSaving(false);
     }
 
-    // ===============================
-    // LOAD ON MOUNT
-    // ===============================
     useEffect(() => {
         loadUser();
     }, []);
 
     if (loading || !user) return <p>Loading...</p>;
 
-    // ===============================
-    // UI
-    // ===============================
     return (
         <div className="max-w-xl space-y-4">
             <h1 className="text-2xl font-semibold">Edit user</h1>
 
-            <label className="block text-sm font-medium">Email</label>
-            <input
-                className="w-full border px-3 py-2 rounded"
-                value={user.email}
-                onChange={(e) => setUser({...user, email: e.target.value})}
-            />
+            <div>
+                <label className="block text-sm font-medium">Email</label>
+                <input
+                    className="w-full rounded border px-3 py-2"
+                    value={user.email}
+                    onChange={(e) => setUser({...user, email: e.target.value})}
+                />
+            </div>
 
-            <label className="block text-sm font-medium">First name</label>
-            <input
-                className="w-full border px-3 py-2 rounded"
-                value={user.first_name}
-                onChange={(e) => setUser({...user, first_name: e.target.value})}
-            />
+            <div>
+                <label className="block text-sm font-medium">First name</label>
+                <input
+                    className="w-full rounded border px-3 py-2"
+                    value={user.first_name}
+                    onChange={(e) =>
+                        setUser({...user, first_name: e.target.value})
+                    }
+                />
+            </div>
 
-            <label className="block text-sm font-medium">Last name</label>
-            <input
-                className="w-full border px-3 py-2 rounded"
-                value={user.last_name}
-                onChange={(e) => setUser({...user, last_name: e.target.value})}
-            />
+            <div>
+                <label className="block text-sm font-medium">Last name</label>
+                <input
+                    className="w-full rounded border px-3 py-2"
+                    value={user.last_name}
+                    onChange={(e) =>
+                        setUser({...user, last_name: e.target.value})
+                    }
+                />
+            </div>
 
-            <label className="block text-sm font-medium">Role</label>
-            <select
-                className="w-full border px-3 py-2 rounded"
-                value={user.role}
-                onChange={(e) => setUser({...user, role: e.target.value})}
-            >
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-            </select>
+            <div>
+                <label className="block text-sm font-medium">Role</label>
+                <select
+                    className="w-full rounded border px-3 py-2"
+                    value={user.role}
+                    onChange={(e) => setUser({...user, role: e.target.value})}
+                >
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
 
             <button
                 onClick={saveUser}
                 disabled={saving}
-                className="px-4 py-2 rounded bg-blue-600 text-white disabled:bg-gray-400"
+                className="rounded bg-brand-500 px-4 py-2 text-white hover:bg-brand-600 disabled:bg-gray-400"
             >
                 {saving ? "Saving..." : "Save"}
             </button>

@@ -9,21 +9,34 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-8uko+v5#pl==#^_z$j7vt(20g25*o5wic^r500c%-fxi4=zfk1'
 
-DEBUG = True  # В проде поставишь False
+DEBUG = True
 IS_PROD = not DEBUG
 
-# ---------------------------------------------------------
-# Важно — используем localhost, иначе Safari/Chrome ломают cookies
-# ---------------------------------------------------------
-ALLOWED_HOSTS = ["localhost"]
+# ===========================================================================================
+# HOSTS — обязательно указываем ПУБЛИЧНЫЙ IP, иначе будет ошибка "Invalid HTTP_HOST header"
+# ===========================================================================================
+ALLOWED_HOSTS = [
+    "158.160.90.163",  # фронтенд открывается из Safari на этом IP
+    "localhost",
+    "127.0.0.1",
+]
 
-# ============================
-# CORS SETTINGS
-# ============================
+# ===========================================================================================
+# CORS / CSRF — фронт работает на http://158.160.90.163:3000 → нужно явно разрешить
+# ===========================================================================================
 
 CORS_ALLOW_CREDENTIALS = True
 
+# Разрешенные origins (фронт)
 CORS_ALLOWED_ORIGINS = [
+    "http://158.160.90.163:3000",
+    "http://localhost:3000",
+]
+
+# Доверенные сайты для CSRF
+CSRF_TRUSTED_ORIGINS = [
+    "http://158.160.90.163",
+    "http://158.160.90.163:3000",
     "http://localhost:3000",
 ]
 
@@ -41,15 +54,15 @@ CORS_ALLOW_HEADERS = [
 
 CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 
-# ============================
+# ===========================================================================================
 # Custom User
-# ============================
+# ===========================================================================================
 
 AUTH_USER_MODEL = "users.User"
 
-# ============================
+# ===========================================================================================
 # Installed apps
-# ============================
+# ===========================================================================================
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -59,24 +72,34 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'users',
+    # third-party
     'rest_framework',
     'corsheaders',
+
+    # apps
+    'users',
 ]
+
+# ===========================================================================================
+# Middleware — ВАЖНО! CORS идет ПЕРЕД CommonMiddleware
+# ===========================================================================================
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
-    # ВАЖНО: CORS до CommonMiddleware
-    'corsheaders.middleware.CorsMiddleware',
-
+    'corsheaders.middleware.CorsMiddleware',  # <---- ОБЯЗАТЕЛЬНО ВВЕРХУ
     'django.middleware.common.CommonMiddleware',
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# ===========================================================================================
+# URL / Templates / WSGI
+# ===========================================================================================
 
 ROOT_URLCONF = 'core.urls'
 
@@ -98,9 +121,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# ============================
-# Database
-# ============================
+# ===========================================================================================
+# Database (оставляем как есть)
+# ===========================================================================================
 
 DATABASES = {
     'default': {
@@ -109,13 +132,13 @@ DATABASES = {
         'USER': 'processoptima_admin',
         'PASSWORD': 'jQv0I0JBmQwV7H7i4Q960jyN',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
-# ============================
-# Password validation
-# ============================
+# ===========================================================================================
+# Passwords
+# ===========================================================================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -124,26 +147,26 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# ============================
+# ===========================================================================================
 # Localization
-# ============================
+# ===========================================================================================
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# ============================
-# Static files
-# ============================
+# ===========================================================================================
+# Static
+# ===========================================================================================
 
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ============================
+# ===========================================================================================
 # DRF + JWT
-# ============================
+# ===========================================================================================
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
