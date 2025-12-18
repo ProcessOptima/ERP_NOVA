@@ -1,9 +1,13 @@
-// src/app/(admin)/settings/users/new/page.tsx
 "use client";
 
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {fetchWithAuth} from "@/app/api";
+
+import ComponentCard from "@/components/common/ComponentCard";
+import Form from "@/components/form/Form";
+import Input from "@/components/form/input/InputField";
+import Button from "@/components/ui/button/Button";
 
 export default function NewUserPage() {
     const router = useRouter();
@@ -16,11 +20,13 @@ export default function NewUserPage() {
         password: "",
     });
 
-    function updateField(key: string, value: string) {
+    function update(key: keyof typeof form, value: string) {
         setForm((prev) => ({...prev, [key]: value}));
     }
 
-    async function submit() {
+    async function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+
         try {
             const res = await fetchWithAuth("/users/", {
                 method: "POST",
@@ -30,68 +36,82 @@ export default function NewUserPage() {
             if (res.ok) {
                 router.push("/settings/users");
             } else {
-                console.error("Create user error:", res.status, await res.text());
+                console.error("Create user error", res.status);
             }
         } catch (e) {
-            console.error("Network error:", e);
+            console.error(e);
         }
     }
 
     return (
-        <div className="max-w-xl space-y-4">
-            <h1 className="text-2xl font-semibold mb-6">Create user</h1>
+        <div className="space-y-6 max-w-2xl">
+            <h1 className="text-2xl font-semibold">Create user</h1>
 
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-                className="w-full border px-4 py-2 rounded-lg"
-                value={form.email}
-                onChange={(e) => updateField("email", e.target.value)}
-            />
+            <ComponentCard title="">
+                <Form onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        {/* EMAIL */}
+                        <div>
+                            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                                Email
+                            </label>
+                            <Input
+                                type="email"
+                                onChange={(e) => update("email", e.target.value)}
+                            />
+                        </div>
 
-            <label className="block text-sm font-medium text-gray-700">
-                First name
-            </label>
-            <input
-                className="w-full border px-4 py-2 rounded-lg"
-                value={form.first_name}
-                onChange={(e) => updateField("first_name", e.target.value)}
-            />
+                        {/* ROLE */}
+                        <div>
+                            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                                Role
+                            </label>
+                            <Input
+                                defaultValue="user"
+                                onChange={(e) => update("role", e.target.value)}
+                            />
+                        </div>
 
-            <label className="block text-sm font-medium text-gray-700">
-                Last name
-            </label>
-            <input
-                className="w-full border px-4 py-2 rounded-lg"
-                value={form.last_name}
-                onChange={(e) => updateField("last_name", e.target.value)}
-            />
+                        {/* FIRST NAME */}
+                        <div>
+                            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                                First name
+                            </label>
+                            <Input
+                                onChange={(e) => update("first_name", e.target.value)}
+                            />
+                        </div>
 
-            <label className="block text-sm font-medium text-gray-700">Role</label>
-            <select
-                className="w-full border px-4 py-2 rounded-lg"
-                value={form.role}
-                onChange={(e) => updateField("role", e.target.value)}
-            >
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-            </select>
+                        {/* LAST NAME */}
+                        <div>
+                            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                                Last name
+                            </label>
+                            <Input
+                                onChange={(e) => update("last_name", e.target.value)}
+                            />
+                        </div>
 
-            <label className="block text-sm font-medium text-gray-700">
-                Password
-            </label>
-            <input
-                className="w-full border px-4 py-2 rounded-lg"
-                type="password"
-                value={form.password}
-                onChange={(e) => updateField("password", e.target.value)}
-            />
+                        {/* PASSWORD */}
+                        <div className="col-span-full">
+                            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                                Password
+                            </label>
+                            <Input
+                                type="password"
+                                onChange={(e) => update("password", e.target.value)}
+                            />
+                        </div>
 
-            <button
-                onClick={submit}
-                className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-            >
-                Save
-            </button>
+                        {/* SUBMIT */}
+                        <div className="col-span-full">
+                            <Button className="w-full" size="sm">
+                                Save
+                            </Button>
+                        </div>
+                    </div>
+                </Form>
+            </ComponentCard>
         </div>
     );
 }

@@ -102,7 +102,7 @@ export default function UsersPage() {
             </div>
 
             {/* ✅ CARD — 1:1 как TailAdmin */}
-            <ComponentCard title="Users">
+            <ComponentCard title="">
                 <BaseDataTable<UserRow>
                     columns={[
                         {key: "id", label: "ID", width: "w-[80px]", searchable: false},
