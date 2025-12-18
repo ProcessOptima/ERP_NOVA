@@ -6,5 +6,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     # ВСЕ API идут через /api/
-    path("api/", include("users.urls")),
+    path("api/", include("apps.users.urls")),
+    path("api/", include("apps.persons.urls")),
 ]
