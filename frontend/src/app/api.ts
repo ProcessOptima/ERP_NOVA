@@ -7,13 +7,11 @@ export async function fetchWithAuth(
     const cleanEndpoint = endpoint.replace(/^\/+/, "");
     const url = `${API}/${cleanEndpoint}`;
 
-    const access = localStorage.getItem("access");
-
     return fetch(url, {
         ...options,
+        credentials: "include",   // 🔴 КЛЮЧЕВО
         headers: {
             "Content-Type": "application/json",
-            ...(access ? {Authorization: `Bearer ${access}`} : {}),
             ...(options.headers || {}),
         },
     });
