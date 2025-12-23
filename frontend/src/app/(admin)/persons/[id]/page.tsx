@@ -9,6 +9,15 @@ import Form from "@/components/form/Form";
 import Input from "@/components/form/input/InputField";
 import Button from "@/components/ui/button/Button";
 
+import Select from "@/components/form/Select";
+import DatePicker from "@/components/form/date-picker";
+
+const sexOptions = [
+    {value: "1", label: "Male"},
+    {value: "2", label: "Female"},
+];
+
+
 type PersonDetail = {
     id: number;
     last_name: string | null;
@@ -183,26 +192,30 @@ export default function EditPersonPage() {
                             <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
                                 Birthday
                             </label>
-                            <Input
-                                type="date"
-                                defaultValue={person.birthday ?? ""}
-                                onChange={(e) =>
-                                    setPerson((p) => (p ? {...p, birthday: e.target.value} : p))
+                            <DatePicker
+                                id="birthday"
+                                label=""
+                                placeholder="Select birthday"
+                                defaultDate={person.birthday ?? undefined}
+                                onChange={(_, dateStr) =>
+                                    setPerson((p) => (p ? {...p, birthday: dateStr || null} : p))
                                 }
                             />
                         </div>
 
                         <div>
                             <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                                Sex (1=Male, 2=Female)
+                                Sex
                             </label>
-                            <Input
-                                type="number"
-                                defaultValue={person.sex ?? ""}
-                                onChange={(e) => {
-                                    const v = e.target.value;
-                                    setPerson((p) => (p ? {...p, sex: v === "" ? null : Number(v)} : p));
-                                }}
+                            <Select
+                                options={sexOptions}
+                                placeholder="Select sex"
+                                defaultValue={person.sex ? String(person.sex) : ""}
+                                onChange={(value: string) =>
+                                    setPerson((p) =>
+                                        p ? {...p, sex: value ? Number(value) : null} : p
+                                    )
+                                }
                             />
                         </div>
 
