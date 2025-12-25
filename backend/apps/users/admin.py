@@ -1,62 +1,75 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
+
 from .models import User
 
 
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):
-    # Какие поля показываем в списке пользователей
+    """
+    Admin для кастомной модели User (email-based).
+    """
+
+    # поля, которые реально есть в модели
+    ordering = ("email",)
+
     list_display = (
-        "username",
         "email",
         "first_name",
         "last_name",
-        "role",
-        "is_staff",
         "is_active",
+        "is_staff",
     )
 
-    # Фильтры в правой колонке
-    list_filter = ("role", "is_staff", "is_active")
+    list_filter = (
+        "is_active",
+        "is_staff",
+        "is_superuser",
+    )
 
-    # Блоки полей в форме редактирования пользователя
+    search_fields = (
+        "email",
+        "first_name",
+        "last_name",
+    )
+
+    # форма редактирования
     fieldsets = (
-        (None, {"fields": ("username", "password")}),
-        ("Персональная информация", {"fields": ("first_name", "last_name", "email")}),
+        (None, {"fields": ("email", "password")}),
+        ("Personal info", {"fields": ("first_name", "last_name")}),
         (
-            "Роль и доступы",
+            "Permissions",
             {
                 "fields": (
-                    "role",
-                    "is_staff",
                     "is_active",
+                    "is_staff",
                     "is_superuser",
                     "groups",
                     "user_permissions",
                 )
             },
         ),
-        ("Важные даты", {"fields": ("last_login", "date_joined")}),
+        ("Important dates", {"fields": ("last_login",)}),
     )
 
-    # Блоки полей в форме создания пользователя
+    # форма создания
     add_fieldsets = (
         (
             None,
             {
                 "classes": ("wide",),
                 "fields": (
-                    "username",
                     "email",
                     "password1",
                     "password2",
-                    "role",
                     "is_staff",
-                    "is_active",
+                    "is_superuser",
                 ),
             },
         ),
     )
 
-    search_fields = ("username", "email", "role")
-    ordering = ("username",)
+    filter_horizontal = (
+        "groups",
+        "user_permissions",
+    )
