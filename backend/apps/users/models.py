@@ -1,27 +1,28 @@
-from django.contrib.auth.base_user import AbstractBaseUser
-from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
+
 from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    """
+    Пользователь. СХЕМА = users_user (как в БД).
+    """
+
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=255, blank=True)
-    last_name = models.CharField(max_length=255, blank=True)
+    first_name = models.CharField(max_length=150, blank=True)
+    last_name = models.CharField(max_length=150, blank=True)
 
-    # username не обязателен (но оставить можно)
-    username = models.CharField(max_length=255, blank=True)
-
-    # кастомное поле роли
-    role = models.CharField(max_length=50, default="user")
-
-    is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+
+    objects = UserManager()
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    objects = UserManager()
+    class Meta:
+        db_table = "users_user"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.email

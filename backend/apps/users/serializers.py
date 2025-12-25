@@ -1,10 +1,13 @@
-# users/serializers.py
 from rest_framework import serializers
 from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=False, allow_blank=True)
+    password = serializers.CharField(
+        write_only=True,
+        required=False,
+        allow_blank=True,
+    )
 
     class Meta:
         model = User
@@ -13,10 +16,11 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "first_name",
             "last_name",
-            "username",
-            "role",
+            "is_active",
+            "is_staff",
             "password",
         )
+        read_only_fields = ("id",)
 
     def create(self, validated_data):
         password = validated_data.pop("password", None)
@@ -24,7 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
         user = User(**validated_data)
 
         if password:
-            user.set_password(password)  # 🔐 ХЭШ
+            user.set_password(password)  # хэш
         else:
             user.set_unusable_password()
 
@@ -38,7 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
             setattr(instance, attr, value)
 
         if password:
-            instance.set_password(password)  # 🔐 ХЭШ
+            instance.set_password(password)  # хэш
 
         instance.save()
         return instance
