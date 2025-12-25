@@ -10,7 +10,7 @@ import os
 # ENV / MODE
 # =============================================================================
 
-ENV = os.getenv("ENV", "dev")  # dev | prod
+ENV = os.getenv("ENV", "dev")        # dev | prod
 IS_PROD = ENV == "prod"
 DEBUG = not IS_PROD
 
@@ -76,8 +76,8 @@ INSTALLED_APPS = [
     "rest_framework",
 
     # Local apps
-    "apps.users.apps.UsersConfig",
-    "apps.persons.apps.PersonsConfig",
+    "apps.users",
+    "apps.persons",
 ]
 
 # =============================================================================
